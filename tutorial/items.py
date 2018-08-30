@@ -18,3 +18,4 @@ class DmozItem(Item):
 class JavBuzItem(Item):
     title = Field()
     pic = Field()
+    pageurl = Field()
