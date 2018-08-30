@@ -17,5 +17,5 @@ LOG_ENABLED = True
 LOG_LEVEL = 'ERROR'
 
 ITEM_PIPELINES = {
-    'tutorial.pipelines.JsonWriterPipeline': 300
+    'tutorial.pipelines.MySqlPipeline': 300
 }
