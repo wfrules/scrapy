@@ -11,11 +11,9 @@ class JavBuzSpider(scrapy.Spider):
     start_urls = ['http://javbuz.com/movie?sort=published&page=1']
 
     def parse(self, response):
-        print("进来了")
         iPage = int(re.findall('(?<=page=)\d', response.url)[0]) + 1
         hxs = HtmlXPathSelector(response)
         # sites = response.css('.box a img::attr(src)').extract()
-        items = []
         arrLinks = response.css('.video-item')
         if len(arrLinks) > 0:
             sNextUrl = 'http://javbuz.com/movie?sort=published&page=' + str(iPage)
@@ -26,6 +24,5 @@ class JavBuzSpider(scrapy.Spider):
             item['title'] = div.css('h4 a::text').extract()[0]
             sPic = div.css('img::attr(src)').extract()[0]
             item['pic'] = 'http:' + sPic
-            items.append(item)
-        return items
+            yield item
 
