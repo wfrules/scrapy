@@ -16,6 +16,7 @@ NEWSPIDER_MODULE = 'tutorial.spiders'
 LOG_ENABLED = True
 LOG_LEVEL = 'ERROR'
 
+# JsonWriterPipeline
 ITEM_PIPELINES = {
     'tutorial.pipelines.MySqlPipeline': 300
 }

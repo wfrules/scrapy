@@ -6,8 +6,8 @@ from tutorial.db import gDb
 # See: http://doc.scrapy.org/topics/item-pipeline.html
 class MySqlPipeline(object):
     def process_item(self, item, spider):
-        sSql = "insert vods(title,pic,pageurl)values(%s,%s,%s)"
-        gDb.nativeExec(sSql, (item['title'], item['pic'], item['pageurl']))
+        sSql = "insert vods(title,pic,pageurl,vodurl)values(%s,%s,%s,%s)"
+        gDb.nativeExec(sSql, (item['title'], item['pic'], item['pageurl'], item['vodurl']))
         gDb.commit()
         return item
 

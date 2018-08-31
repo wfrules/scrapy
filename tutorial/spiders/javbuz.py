@@ -12,7 +12,6 @@ class JavBuzSpider(scrapy.Spider):
 
     def parse(self, response):
         iPage = int(re.findall('(?<=page=)\d*', response.url)[0]) + 1
-        hxs = HtmlXPathSelector(response)
         # sites = response.css('.box a img::attr(src)').extract()
         arrLinks = response.css('.video-item')
         for index, div in enumerate(arrLinks):
@@ -21,11 +20,23 @@ class JavBuzSpider(scrapy.Spider):
             sPic = div.css('img::attr(src)').extract()[0]
             item['pic'] = 'http:' + sPic
             item['pageurl'] = 'http://' + self.allowed_domains[0] + '/' + div.css('a::attr(href)').extract()[0]
-            yield item
+            yield Request(url=item['pageurl'], meta={'item': item}, callback=self.detail_parse)
         if len(arrLinks) > 0:
-            sNextUrl = 'http://javbuz.com/movie?sort=published&page=' + str(iPage)
+            sNextUrl = 'http://' + self.allowed_domains[0] + '/movie?sort=published&page=' + str(iPage)
             print(sNextUrl)
             yield Request(url=sNextUrl, callback=self.parse)
         else:
             print('抓取完毕')
 
+    def detail_parse(self, response):
+        # 接收上级已爬取的数据
+        item = response.meta['item']
+        arrAs = response.css('.dropdown-menu li a')
+        item['vodurl'] = ''
+        if len(arrAs) > 0:
+            objLs = arrAs[0]
+            sVodUrl = objLs.css('::attr(href)').extract()[0]
+            item['vodurl'] = sVodUrl
+
+        #一级内页数据提取
+        return item
