@@ -1,3 +1,4 @@
+from tutorial.items import JavBuzItem
 import json
 from tutorial.db import gDb
 # Define your item pipelines here
@@ -6,8 +7,9 @@ from tutorial.db import gDb
 # See: http://doc.scrapy.org/topics/item-pipeline.html
 class MySqlPipeline(object):
     def process_item(self, item, spider):
-        gDb.saveObj('vods', item)
-        gDb.commit()
+        if isinstance(item, JavBuzItem):
+            gDb.saveObj('vods', item)
+            gDb.commit()
         return item
 
 class JsonWriterPipeline(object):
