@@ -23,9 +23,10 @@ class db:
         listSymbol = []
         listVal = []
         for key in dict(obj):
-            listFields.append(key)
-            listSymbol.append('%s')
-            listVal.append(obj[key])
+            if key not in ['images','image_urls']:
+                listFields.append(key)
+                listSymbol.append('%s')
+                listVal.append(obj[key])
         sSql = "insert " + tab + "(" + ','.join(listFields) + ")values(" + ','.join(listSymbol) + ")"
         self.nativeExec(sSql, listVal)
         # self.nativeExec(sSql,tuple(listVal))

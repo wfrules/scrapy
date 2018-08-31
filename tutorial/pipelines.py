@@ -12,6 +12,8 @@ class MySqlPipeline(object):
             gDb.commit()
         return item
 
+
+
 class JsonWriterPipeline(object):
     def __init__(self):
         self.file = open('items.json', 'w')#wb是按字节 w是写字符串

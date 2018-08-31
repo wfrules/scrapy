@@ -20,3 +20,5 @@ class JavBuzItem(Item):
     pic = Field()
     pageurl = Field()
     vodurl = Field()
+    image_urls = Field()
+    images = Field()

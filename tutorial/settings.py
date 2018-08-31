@@ -1,3 +1,4 @@
+import os
 # Scrapy settings for tutorial project
 #
 # For simplicity, this file contains only the most important settings by
@@ -16,7 +17,12 @@ NEWSPIDER_MODULE = 'tutorial.spiders'
 LOG_ENABLED = True
 LOG_LEVEL = 'ERROR'
 
+
+IMAGES_STORE = os.getcwd() + '/../images'
+
 # JsonWriterPipeline
 ITEM_PIPELINES = {
+    'scrapy.contrib.pipeline.images.ImagesPipeline': 1,
     'tutorial.pipelines.MySqlPipeline': 300
 }
+
