@@ -7,6 +7,7 @@ from tutorial.db import gDb
 # See: http://doc.scrapy.org/topics/item-pipeline.html
 class MySqlPipeline(object):
     def process_item(self, item, spider):
+        item['pic_path'] = item['images'][0]['path']
         if isinstance(item, JavBuzItem):
             gDb.saveObj('vods', item)
             gDb.commit()
