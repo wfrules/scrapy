@@ -18,4 +18,15 @@ class db:
         self.cursor.execute(sql, params)
     def commit(self):#提交任务
         self.conn.commit()
+    def saveObj(self, tab, obj):
+        listFields = []
+        listSymbol = []
+        listVal = []
+        for key in dict(obj):
+            listFields.append(key)
+            listSymbol.append('%s')
+            listVal.append(obj[key])
+        sSql = "insert " + tab + "(" + ','.join(listFields) + ")values(" + ','.join(listSymbol) + ")"
+        self.nativeExec(sSql, listVal)
+        # self.nativeExec(sSql,tuple(listVal))
 gDb = db()
