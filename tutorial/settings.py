@@ -27,7 +27,16 @@ ITEM_PIPELINES = {
 }
 
 IPPOOL = [
-    {"ipaddr": "221.230.72.165:80"},
-    {"ipaddr": "175.154.50.162:8118"},
-    {"ipaddr": "111.155.116.212:8123"}
+    {"ipaddr": "183.129.244.16:10080"}
 ]
+
+UPPOOL = [
+    "wf1 Mozilla/5.0 (Windows NT 10.0; WOW64; rv:52.0) Gecko/20100101 Firefox/52.0",
+    "wf2 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36",
+    "wf3 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.79 Safari/537.36 Edge/14.14393"
+]
+
+DOWNLOADER_MIDDLEWARES = {
+    'scrapy.downloadermiddlewares.httpproxy.HttpProxyMiddleware':123,
+    'tutorial.middlewares.IPPOOlS' : 125
+}
