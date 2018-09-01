@@ -26,3 +26,8 @@ ITEM_PIPELINES = {
     'tutorial.pipelines.MySqlPipeline': 300
 }
 
+IPPOOL = [
+    {"ipaddr": "221.230.72.165:80"},
+    {"ipaddr": "175.154.50.162:8118"},
+    {"ipaddr": "111.155.116.212:8123"}
+]
