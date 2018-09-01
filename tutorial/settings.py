@@ -27,7 +27,7 @@ ITEM_PIPELINES = {
 }
 
 IPPOOL = [
-    {"ipaddr": "183.129.244.16:10080"}
+    {"ipaddr": "119.27.172.241:80"}
 ]
 
 UPPOOL = [
