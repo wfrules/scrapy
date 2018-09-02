@@ -22,3 +22,4 @@ class IPPOOlS(HttpProxyMiddleware):
         thisua = random.choice(UPPOOL)
         # print("当前使用User-Agent是："+thisua)
         request.headers.setdefault('User-Agent',thisua)
+        request.meta["cookiejar"] = 1;
