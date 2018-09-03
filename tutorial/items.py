@@ -10,10 +10,6 @@ class TutorialItem(Item):
     # name = Field()
     pass
 
-class DmozItem(Item):
-    title = Field()
-    link = Field()
-    desc = Field()
 
 class JavBuzItem(Item):
     title = Field()
@@ -23,3 +19,9 @@ class JavBuzItem(Item):
     image_urls = Field()
     images = Field()
     pic_path = Field()
+
+class AuthorLinkItem(Item):
+    id = Field()
+    site_id = Field()
+    author_id = Field()
+    url = Field()

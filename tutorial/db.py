@@ -1,7 +1,7 @@
 import pymysql
 class db:
     def __init__(self):
-        self.conn = pymysql.connect("localhost","root","root","vods")
+        self.conn = pymysql.connect(host="192.168.1.192",user="root",passwd="rootmlf",db="res",port=55000)
         self.cursor = self.conn.cursor()
     def nativeQry(self, sql, params):#查询语法
         self.cursor.execute(sql, params)
@@ -16,6 +16,7 @@ class db:
         return arrResult
     def nativeExec(self, sql, params):#执行语法
         self.cursor.execute(sql, params)
+        return self.cursor.fetchone()
     def commit(self):#提交任务
         self.conn.commit()
     def saveObj(self, tab, obj):
@@ -29,5 +30,13 @@ class db:
                 listVal.append(obj[key])
         sSql = "insert " + tab + "(" + ','.join(listFields) + ")values(" + ','.join(listSymbol) + ")"
         self.nativeExec(sSql, listVal)
-        # self.nativeExec(sSql,tuple(listVal))
+        return self.cursor.lastrowid
+    def saveUnique(self, tab, obj, uniqueField):
+        sSql = "select * from " + tab + "  where " + uniqueField + '=%s'
+        arrRet = self.nativeQry(sSql, [obj[uniqueField]])
+        if len(arrRet) == 0:
+            obj['id'] = self.saveObj(tab, obj)
+            return obj
+        else:
+            return arrRet[0]
 gDb = db()
