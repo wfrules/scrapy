@@ -25,3 +25,11 @@ class AuthorLinkItem(Item):
     site_id = Field()
     author_id = Field()
     url = Field()
+
+class TabItem(Item):
+    id = Field()
+    site_id = Field()
+    song_id = Field()
+    url = Field()
+    ttype = Field()
+    content = Field()
