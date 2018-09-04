@@ -1,7 +1,11 @@
 import pymysql
+import json
+import os
 class db:
     def __init__(self):
-        self.conn = pymysql.connect(host="192.168.1.192",user="root",passwd="rootmlf",db="res",port=55000)
+        objConfigFile = open(os.getcwd() + "/cliconfig.json", encoding='utf-8')  # 设置以utf - 8 解码模式读取文件，encoding参数必须设置
+        objSetting = json.load(objConfigFile)
+        self.conn = pymysql.connect(host=objSetting['host'], user=objSetting['user'], passwd=objSetting['passwd'], db=objSetting['db'], port=objSetting['port'])
         self.cursor = self.conn.cursor()
     def nativeQry(self, sql, params):#查询语法
         self.cursor.execute(sql, params)

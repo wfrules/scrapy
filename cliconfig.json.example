@@ -1,0 +1,7 @@
+{
+  "host": "192.168.?.?",
+  "user": "root",
+  "passwd": "root",
+  "db": "databasename",
+  "port": 3306
+}
