@@ -7,9 +7,7 @@ from scrapy.item import Item, Field
 
 from scrapy_djangoitem import DjangoItem
 
-from django_orm.app.models import Person, Proxy
-class PersonItem(DjangoItem):
-    django_model = Person
+from django_orm.app.models import Proxy
 
 class ProxyItem(DjangoItem):
     django_model = Proxy

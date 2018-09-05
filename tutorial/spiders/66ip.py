@@ -2,6 +2,7 @@
 import scrapy
 from scrapy.http import Request
 from tutorial.items import ProxyItem
+from django_orm.app.models import Proxy
 
 class ProxySpider(scrapy.Spider):
     name = '66ip'
@@ -9,6 +10,7 @@ class ProxySpider(scrapy.Spider):
     start_urls = ['http://www.66ip.cn']
 
     def parse(self, response):
+        Proxy.objects.all().delete()
         arrLinks = response.css('.textlarge22 li a::attr(href)').extract()
         for index, aLink in enumerate(arrLinks):
             sLink = self.start_urls[0] + "/" + aLink
@@ -21,8 +23,10 @@ class ProxySpider(scrapy.Spider):
                 sIp = arrTds[0].css("::text").extract()[0]
                 iPort = arrTds[1].css("::text").extract()[0]
                 sArea = arrTds[2].css("::text").extract()[0]
+                sRemark = arrTds[4].css("::text").extract()[0]
                 objItem = ProxyItem()
                 objItem['ip'] = sIp
                 objItem['port'] = iPort
                 objItem['area'] = sArea
+                objItem['remark'] = sRemark
                 yield objItem

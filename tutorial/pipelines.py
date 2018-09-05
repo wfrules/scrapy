@@ -18,8 +18,7 @@ class MySqlPipeline(object):
             gDb.saveUnique('tab', item, 'url')
             gDb.commit()
         if isinstance(item, ProxyItem):
-            item.save()
-            print(item['ip'])
+            item = item.save()
         return item
 
 
