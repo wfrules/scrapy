@@ -5,6 +5,12 @@
 
 from scrapy.item import Item, Field
 
+from scrapy_djangoitem import DjangoItem
+
+from django_orm.app.models import Person
+class PersonItem(DjangoItem):
+    django_model = Person
+
 class TutorialItem(Item):
     # define the fields for your item here like:
     # name = Field()

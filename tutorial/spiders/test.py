@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 import scrapy
 from scrapy.http import Request
+from tutorial.items import PersonItem
 
 class TestSpider(scrapy.Spider):
     name = "test"
@@ -12,5 +13,7 @@ class TestSpider(scrapy.Spider):
             yield Request(url, cookies={'hello': 'world'})
 
     def parse(self, response):
+        objItem = PersonItem()
+        objItem.save()
         print(response.text)
         pass

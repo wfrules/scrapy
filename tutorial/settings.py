@@ -40,3 +40,10 @@ DOWNLOADER_MIDDLEWARES = {
     'scrapy.downloadermiddlewares.httpproxy.HttpProxyMiddleware':123,
     'tutorial.middlewares.IPPOOlS' : 125
 }
+
+import django
+from django.conf import settings
+import django_orm.djsettings as s
+
+# settings.configure(DATABASES=s.DATABASES, INSTALLED_APPS=['django_orm.app'], DEBUG=True)
+django.setup()
