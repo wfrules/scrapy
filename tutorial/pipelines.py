@@ -1,4 +1,4 @@
-from tutorial.items import JavBuzItem, AuthorLinkItem, TabItem
+from tutorial.items import JavBuzItem, AuthorLinkItem, TabItem, ProxyItem
 import json
 from tutorial.db import gDb
 # Define your item pipelines here
@@ -17,6 +17,9 @@ class MySqlPipeline(object):
         if isinstance(item, TabItem):
             gDb.saveUnique('tab', item, 'url')
             gDb.commit()
+        if isinstance(item, ProxyItem):
+            item.save()
+            print(item['ip'])
         return item
 
 

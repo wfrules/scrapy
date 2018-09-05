@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 import scrapy
 from scrapy.http import Request
+from tutorial.items import ProxyItem
 
 class ProxySpider(scrapy.Spider):
     name = '66ip'
@@ -20,5 +21,8 @@ class ProxySpider(scrapy.Spider):
                 sIp = arrTds[0].css("::text").extract()[0]
                 iPort = arrTds[1].css("::text").extract()[0]
                 sArea = arrTds[2].css("::text").extract()[0]
-                print(sIp + ':' + iPort + sArea)
-        pass
+                objItem = ProxyItem()
+                objItem['ip'] = sIp
+                objItem['port'] = iPort
+                objItem['area'] = sArea
+                yield objItem

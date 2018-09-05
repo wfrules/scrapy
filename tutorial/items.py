@@ -7,9 +7,12 @@ from scrapy.item import Item, Field
 
 from scrapy_djangoitem import DjangoItem
 
-from django_orm.app.models import Person
+from django_orm.app.models import Person, Proxy
 class PersonItem(DjangoItem):
     django_model = Person
+
+class ProxyItem(DjangoItem):
+    django_model = Proxy
 
 class TutorialItem(Item):
     # define the fields for your item here like:

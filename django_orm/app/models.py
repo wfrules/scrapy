@@ -10,6 +10,17 @@ from __future__ import unicode_literals
 
 from django.db import models
 
+class Proxy(models.Model):
+    id = models.IntegerField(primary_key=True, max_length=10)
+    ip = models.CharField(max_length=50)
+    port = models.IntegerField()
+    request_at = models.DateTimeField(blank=True, null=True)
+    response_at = models.DateTimeField(blank=True, null=True)
+    area = models.CharField(max_length=100)
+    class Meta:
+        managed = False
+        db_table = 'proxy'
+
 class Person(models.Model):
     name = models.CharField(max_length=255)
     age = models.IntegerField()
