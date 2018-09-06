@@ -23,7 +23,7 @@ class ValidateSpider(scrapy.Spider):
             aProxyItem['area'] = aProxy.area
             aProxyItem['remark'] = aProxy.remark
             yield aProxyItem
-            yield Request(url='https://www.baidu.com',  meta={'item': aProxyItem}, callback=self.parse)
+            yield Request(url='https://www.baidu.com',  meta={'item': aProxyItem}, callback=self.parse,  dont_filter=True)
 
     def parse(self, response):
         aProxyItem = response.meta['item']
