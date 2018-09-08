@@ -18,7 +18,7 @@ class TutorialItem(Item):
     pass
 
 
-class JavBuzItem(Item):
+class VodItem(Item):
     title = Field()
     pic = Field()
     pageurl = Field()

@@ -1,4 +1,4 @@
-from tutorial.items import JavBuzItem, AuthorLinkItem, TabItem, ProxyItem
+from tutorial.items import VodItem, AuthorLinkItem, TabItem, ProxyItem
 import json
 from tutorial.db import gDb
 # Define your item pipelines here
@@ -7,7 +7,7 @@ from tutorial.db import gDb
 # See: http://doc.scrapy.org/topics/item-pipeline.html
 class MySqlPipeline(object):
     def process_item(self, item, spider):
-        if isinstance(item, JavBuzItem):
+        if isinstance(item, VodItem):
             item['pic_path'] = item['images'][0]['path']
             gDb.saveObj('vods', item)
             gDb.commit()
