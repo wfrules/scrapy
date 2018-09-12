@@ -23,7 +23,8 @@ IMAGES_STORE = os.getcwd() + '/../images'
 # JsonWriterPipeline
 ITEM_PIPELINES = {
     'scrapy.contrib.pipeline.images.ImagesPipeline': 1,
-    'tutorial.pipelines.MySqlPipeline': 300
+    'tutorial.pipelines.MySqlPipeline': 300,
+    'tutorial.pipelines.MongoPipeline': 400
 }
 
 IPPOOL = [
@@ -31,9 +32,9 @@ IPPOOL = [
 ]
 
 UPPOOL = [
-    "wf1 Mozilla/5.0 (Windows NT 10.0; WOW64; rv:52.0) Gecko/20100101 Firefox/52.0",
-    "wf2 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36",
-    "wf3 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.79 Safari/537.36 Edge/14.14393"
+    "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:52.0) Gecko/20100101 Firefox/52.0",
+    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36",
+    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.79 Safari/537.36 Edge/14.14393"
 ]
 
 DOWNLOADER_MIDDLEWARES = {
