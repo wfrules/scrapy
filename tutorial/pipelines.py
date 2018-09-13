@@ -23,7 +23,7 @@ class MySqlPipeline(object):
         return item
 
 class MongoPipeline(object):
-    collection = 'military_affairs'
+    collection = 'proxy'
     def __init__(self, mongo_uri, mongo_db):
          self.mongo_uri = mongo_uri
          self.mongo_db = mongo_db
@@ -34,7 +34,7 @@ class MongoPipeline(object):
         我们需要从settings.py文件中，取得数据库的URI和数据库名称'''
         return cls(
             mongo_uri = 'mongodb://localhost:27017',#crawler.settings.get('MONGO_URI'),
-            mongo_db = 'proxy'  #crawler.settings.get('MONGO_DB')
+            mongo_db = 'crawler'  #crawler.settings.get('MONGO_DB')
         )
 
     def open_spider(self, spider):
