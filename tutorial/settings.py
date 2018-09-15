@@ -16,6 +16,9 @@ NEWSPIDER_MODULE = 'tutorial.spiders'
 
 LOG_ENABLED = True
 LOG_LEVEL = 'ERROR'
+REDIRECT_ENABLED = False
+HTTPERROR_ALLOWED_CODES = [302]
+# COOKIES_ENABLED = True
 
 
 IMAGES_STORE = os.getcwd() + '/../images'

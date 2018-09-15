@@ -21,7 +21,6 @@ class MySqlPipeline(object):
         if isinstance(item, ProxyItem):
             item.save()
         return item
-
 class MongoPipeline(object):
     collection = 'proxy'
     def __init__(self, mongo_uri, mongo_db):
